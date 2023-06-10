@@ -1,5 +1,6 @@
 #include "SDL2/SDL.h"
 #include "time.h"
+#include <SDL2/SDL_stdinc.h>
 
 class Timer{
 	int windowWidth;
@@ -23,7 +24,7 @@ class Timer{
 	void getTime();
 	void incrementTime();
 	void handleInput();
-	SDL_Texture *drawNumber(char number, int width, int height);
+	SDL_Texture *drawNumber(char number, int width, int height, unsigned char red, unsigned char green, unsigned char blue);
 	void draw0();
 	void draw1();
 
@@ -168,153 +169,153 @@ void Timer::handleInput(){
     }
 }
 
-SDL_Texture *Timer::drawNumber(char number, int width, int height){
+SDL_Texture *Timer::drawNumber(char number, int width, int height, unsigned char red, unsigned char green, unsigned char blue){
 	SDL_Surface* drawnSurface = SDL_CreateRGBSurface(0,width,height,32,0,0,0,0);
 	switch (number) {
 		case '0':{
 			SDL_Rect upperrect = {0, 0, width, height/6};
-			SDL_FillRect(drawnSurface, &upperrect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));
+			SDL_FillRect(drawnSurface, &upperrect, SDL_MapRGB(drawnSurface->format, red, green, blue));
 
 			SDL_Rect lowerrect = {0, (height/6)*5, width, height-((height/6)*5)};
-			SDL_FillRect(drawnSurface, &lowerrect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));
+			SDL_FillRect(drawnSurface, &lowerrect, SDL_MapRGB(drawnSurface->format, red, green, blue));
 
 			SDL_Rect rightrect = {(width/4)*3, 0, width-((width/4)*3), height};
-			SDL_FillRect(drawnSurface, &rightrect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));
+			SDL_FillRect(drawnSurface, &rightrect, SDL_MapRGB(drawnSurface->format, red, green, blue));
 			
 			SDL_Rect lefttrect = {0, 0, (width/4), height};
-			SDL_FillRect(drawnSurface, &lefttrect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));
+			SDL_FillRect(drawnSurface, &lefttrect, SDL_MapRGB(drawnSurface->format, red, green, blue));
 			break;
 		}	
 		case '1': {
 			SDL_Rect verticalrect = {(width/4)*3, 0, width-(width/4)*3, height};
-			SDL_FillRect(drawnSurface, &verticalrect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));
+			SDL_FillRect(drawnSurface, &verticalrect, SDL_MapRGB(drawnSurface->format, red, green, blue));
 			break;
 		}
 		case '2': {
 			SDL_Rect upperrect = {0, 0, width, height/6};
-			SDL_FillRect(drawnSurface, &upperrect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));
+			SDL_FillRect(drawnSurface, &upperrect, SDL_MapRGB(drawnSurface->format, red, green, blue));
 
 			SDL_Rect middlerect = {0, (height/12)*5, width, height/6};
-			SDL_FillRect(drawnSurface, &middlerect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));
+			SDL_FillRect(drawnSurface, &middlerect, SDL_MapRGB(drawnSurface->format, red, green, blue));
 
 			SDL_Rect lowerrect = {0, (height/6)*5, width, height-(height/6)*5};
-			SDL_FillRect(drawnSurface, &lowerrect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));
+			SDL_FillRect(drawnSurface, &lowerrect, SDL_MapRGB(drawnSurface->format, red, green, blue));
 
 			SDL_Rect rightrect = {(width/4)*3, 0, width-(width/4)*3, height/2};
-			SDL_FillRect(drawnSurface, &rightrect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));
+			SDL_FillRect(drawnSurface, &rightrect, SDL_MapRGB(drawnSurface->format, red, green, blue));
 
 			SDL_Rect leftrect = {0, height/2, (width/4), height/2};
-			SDL_FillRect(drawnSurface, &leftrect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));
+			SDL_FillRect(drawnSurface, &leftrect, SDL_MapRGB(drawnSurface->format, red, green, blue));
 			break;
 		}	
 		case '3': {
 			SDL_Rect upperrect = {0, 0, width, height/6};
-			SDL_FillRect(drawnSurface, &upperrect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));
+			SDL_FillRect(drawnSurface, &upperrect, SDL_MapRGB(drawnSurface->format, red, green, blue));
 
-			SDL_Rect middlerect = {width/6, (height/12)*5, width, height/6};
-			SDL_FillRect(drawnSurface, &middlerect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));
+			SDL_Rect middlerect = {width/4, (height/12)*5, width, height/6};
+			SDL_FillRect(drawnSurface, &middlerect, SDL_MapRGB(drawnSurface->format, red, green, blue));
 
 			SDL_Rect lowerrect = {0, (height/6)*5, width, height-((height/6)*5)};
-			SDL_FillRect(drawnSurface, &lowerrect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));
+			SDL_FillRect(drawnSurface, &lowerrect, SDL_MapRGB(drawnSurface->format, red, green, blue));
 
 			SDL_Rect rightrect = {(width/4)*3, 0, width-((width/4)*3), height};
-			SDL_FillRect(drawnSurface, &rightrect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));
+			SDL_FillRect(drawnSurface, &rightrect, SDL_MapRGB(drawnSurface->format, red, green, blue));
 			break;
 		}	
 		case '4':{
 
 			SDL_Rect middlerect = {0, (height/12)*5, width, 2*height/12};
-			SDL_FillRect(drawnSurface, &middlerect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));
+			SDL_FillRect(drawnSurface, &middlerect, SDL_MapRGB(drawnSurface->format, red, green, blue));
 
 			SDL_Rect rightrect = {(width/4)*3, 0, width-((width/4)*3), height};
-			SDL_FillRect(drawnSurface, &rightrect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));
+			SDL_FillRect(drawnSurface, &rightrect, SDL_MapRGB(drawnSurface->format, red, green, blue));
 			
 			SDL_Rect lefttrect = {0, 0, (width/4), height/2};
-			SDL_FillRect(drawnSurface, &lefttrect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));
+			SDL_FillRect(drawnSurface, &lefttrect, SDL_MapRGB(drawnSurface->format, red, green, blue));
 			break;
 		}
 		case '5':{
 			SDL_Rect upperrect = {0, 0, width, height/6};
-			SDL_FillRect(drawnSurface, &upperrect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));
+			SDL_FillRect(drawnSurface, &upperrect, SDL_MapRGB(drawnSurface->format, red, green, blue));
 
 			SDL_Rect middlerect = {0, (height/12)*5, width, height/6};
-			SDL_FillRect(drawnSurface, &middlerect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));
+			SDL_FillRect(drawnSurface, &middlerect, SDL_MapRGB(drawnSurface->format, red, green, blue));
 
 			SDL_Rect lowerrect = {0, (height/6)*5, width, height-((height/6)*5)};
-			SDL_FillRect(drawnSurface, &lowerrect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));
+			SDL_FillRect(drawnSurface, &lowerrect, SDL_MapRGB(drawnSurface->format, red, green, blue));
 
 			SDL_Rect rightrect = {(width/4)*3, height/2, width-((width/4)*3), height/2};
-			SDL_FillRect(drawnSurface, &rightrect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));
+			SDL_FillRect(drawnSurface, &rightrect, SDL_MapRGB(drawnSurface->format, red, green, blue));
 			
 			SDL_Rect lefttrect = {0, 0, (width/4), height/2};
-			SDL_FillRect(drawnSurface, &lefttrect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));
+			SDL_FillRect(drawnSurface, &lefttrect, SDL_MapRGB(drawnSurface->format, red, green, blue));
 			break;
 		}
 		case '6':{
 			SDL_Rect upperrect = {0, 0, width, height/6};
-			SDL_FillRect(drawnSurface, &upperrect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));
+			SDL_FillRect(drawnSurface, &upperrect, SDL_MapRGB(drawnSurface->format, red, green, blue));
 
 			SDL_Rect middlerect = {0, (height/12)*5, width, height/6};
-			SDL_FillRect(drawnSurface, &middlerect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));
+			SDL_FillRect(drawnSurface, &middlerect, SDL_MapRGB(drawnSurface->format, red, green, blue));
 
 			SDL_Rect lowerrect = {0, (height/6)*5, width, height-((height/6)*5)};
-			SDL_FillRect(drawnSurface, &lowerrect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));
+			SDL_FillRect(drawnSurface, &lowerrect, SDL_MapRGB(drawnSurface->format, red, green, blue));
 
 			SDL_Rect rightrect = {(width/4)*3, height/2, width-((width/4)*3), height/2};
-			SDL_FillRect(drawnSurface, &rightrect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));
+			SDL_FillRect(drawnSurface, &rightrect, SDL_MapRGB(drawnSurface->format, red, green, blue));
 			
 			SDL_Rect lefttrect = {0, 0, (width/4), height};
-			SDL_FillRect(drawnSurface, &lefttrect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));
+			SDL_FillRect(drawnSurface, &lefttrect, SDL_MapRGB(drawnSurface->format, red, green, blue));
 			break;
 		}
 		case '7':{
 			SDL_Rect upperrect = {0, 0, width, height/6};
-			SDL_FillRect(drawnSurface, &upperrect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));
+			SDL_FillRect(drawnSurface, &upperrect, SDL_MapRGB(drawnSurface->format, red, green, blue));
 
 			SDL_Rect rightrect = {(width/4)*3, 0, width-((width/4)*3), height};
-			SDL_FillRect(drawnSurface, &rightrect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));		
+			SDL_FillRect(drawnSurface, &rightrect, SDL_MapRGB(drawnSurface->format, red, green, blue));		
 			break;
 		}
 		case '8':{
 			SDL_Rect upperrect = {0, 0, width, height/6};
-			SDL_FillRect(drawnSurface, &upperrect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));
+			SDL_FillRect(drawnSurface, &upperrect, SDL_MapRGB(drawnSurface->format, red, green, blue));
 
 			SDL_Rect middlerect = {0, (height/12)*5, width, height/6};
-			SDL_FillRect(drawnSurface, &middlerect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));
+			SDL_FillRect(drawnSurface, &middlerect, SDL_MapRGB(drawnSurface->format, red, green, blue));
 
 			SDL_Rect lowerrect = {0, (height/6)*5, width, height-((height/6)*5)};
-			SDL_FillRect(drawnSurface, &lowerrect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));
+			SDL_FillRect(drawnSurface, &lowerrect, SDL_MapRGB(drawnSurface->format, red, green, blue));
 
 			SDL_Rect rightrect = {(width/4)*3, 0, width-((width/4)*3), height};
-			SDL_FillRect(drawnSurface, &rightrect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));
+			SDL_FillRect(drawnSurface, &rightrect, SDL_MapRGB(drawnSurface->format, red, green, blue));
 			
 			SDL_Rect lefttrect = {0, 0, (width/4), height};
-			SDL_FillRect(drawnSurface, &lefttrect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));
+			SDL_FillRect(drawnSurface, &lefttrect, SDL_MapRGB(drawnSurface->format, red, green, blue));
 			break;
 		}
 		case '9':{
 			SDL_Rect upperrect = {0, 0, width, height/6};
-			SDL_FillRect(drawnSurface, &upperrect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));
+			SDL_FillRect(drawnSurface, &upperrect, SDL_MapRGB(drawnSurface->format, red, green, blue));
 
 			SDL_Rect middlerect = {0, (height/12)*5, width, height/6};
-			SDL_FillRect(drawnSurface, &middlerect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));
+			SDL_FillRect(drawnSurface, &middlerect, SDL_MapRGB(drawnSurface->format, red, green, blue));
 
 			SDL_Rect lowerrect = {0, (height/6)*5, width, height-((height/6)*5)};
-			SDL_FillRect(drawnSurface, &lowerrect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));
+			SDL_FillRect(drawnSurface, &lowerrect, SDL_MapRGB(drawnSurface->format, red, green, blue));
 
 			SDL_Rect rightrect = {(width/4)*3, 0, width-((width/4)*3), height};
-			SDL_FillRect(drawnSurface, &rightrect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));
+			SDL_FillRect(drawnSurface, &rightrect, SDL_MapRGB(drawnSurface->format, red, green, blue));
 			
 			SDL_Rect lefttrect = {0, 0, (width/4), height/2};
-			SDL_FillRect(drawnSurface, &lefttrect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));
+			SDL_FillRect(drawnSurface, &lefttrect, SDL_MapRGB(drawnSurface->format, red, green, blue));
 			break;
 		}
 		case ':':{
 			SDL_Rect upperrect = {0, height/3-width/2, width, width};
-			SDL_FillRect(drawnSurface, &upperrect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));
+			SDL_FillRect(drawnSurface, &upperrect, SDL_MapRGB(drawnSurface->format, red, green, blue));
 
 			SDL_Rect lowerrect = {0, 2*height/3-width/2, width, width};
-			SDL_FillRect(drawnSurface, &lowerrect, SDL_MapRGB(drawnSurface->format, 0, 255, 0));		
+			SDL_FillRect(drawnSurface, &lowerrect, SDL_MapRGB(drawnSurface->format, red, green, blue));		
 			break;
 		}
 	}
@@ -326,14 +327,15 @@ SDL_Texture *Timer::drawNumber(char number, int width, int height){
 void Timer::draw0(){
 	int numberWidth = windowWidth/10;
 	int numberHeight = 3*numberWidth/2;
+	unsigned char red = 200, green = 0, blue = 200;
 			
 	for (unsigned int i = 0; i < 7; i++) {
 		if (i == 2) {
-			textures[i] = drawNumber(dateText[i], numberWidth/3, numberHeight);
+			textures[i] = drawNumber(dateText[i], numberWidth/3, numberHeight, red, green, blue);
 		} else if (i < 5){
-			textures[i] = drawNumber(dateText[i], numberWidth, numberHeight);
+			textures[i] = drawNumber(dateText[i], numberWidth, numberHeight, red, green, blue);
 		} else {
-			textures[i] = drawNumber(dateText[i+1], numberWidth, numberHeight);
+			textures[i] = drawNumber(dateText[i+1], numberWidth, numberHeight, red, green, blue);
 		}
 	}
 
@@ -381,12 +383,13 @@ void Timer::draw0(){
 void Timer::draw1(){
 	int numberWidth = 3*windowWidth/19;
 	int numberHeight = 3*numberWidth/2;
+	unsigned char red = 200, green = 0, blue = 200;
 					
 	for (unsigned int i = 0; i < 5; i++) {
 		if (i == 2) {
-			textures[i] = drawNumber(dateText[i], numberWidth/3, numberHeight);
+			textures[i] = drawNumber(dateText[i], numberWidth/3, numberHeight, 150, 100, 150);
 		} else {
-			textures[i] = drawNumber(dateText[i], numberWidth, numberHeight);
+			textures[i] = drawNumber(dateText[i], numberWidth, numberHeight, red, green, blue);
 		}
 	}
 
