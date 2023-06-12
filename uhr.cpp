@@ -1,6 +1,5 @@
 #include "SDL2/SDL.h"
 #include "time.h"
-#include <SDL2/SDL_stdinc.h>
 
 class Timer{
 	int windowWidth;
